@@ -1,12 +1,13 @@
 'use strict';
 
-const API_URL = 'https://script.google.com/macros/s/AKfycbztsD6qumI0hYof9mOQw-oy5werAH2s3HGa313QekPfFvVaCW1qgytps-LD-WCeynCQ/exec'
+const API_URL = 'https://script.google.com/macros/s/AKfycbztsD6qumI0hYof9mOQw-oy5werAH2s3HGa313QekPfFvVaCW1qgytps-LD-WCeynCQ/exec';
 
 const TIMEOUT_MS = 15000;
 const RETRIES = 2;
 
 const $ = id => document.getElementById(id);
-const views = { form: $('v-form'), loading: $('v-loading'), found: $('v-found'), none: $('v-none') };
+const views = { loading: $('v-loading'), found: $('v-found'), none: $('v-none') };
+const btn = document.querySelector('#v-form button');
 const show = name => { for (const k in views) views[k].hidden = (k !== name); };
 
 let dotTimer;
@@ -39,9 +40,22 @@ $('v-form').addEventListener('submit', async ev => {
   const room = $('room').value.trim();
   const noRaw = $('no').value.trim();
   const msg = $('v-msg');
-  if (!/^\d{3}$/.test(room) || !/^\d{1,3}$/.test(noRaw)) {
-    msg.textContent = 'กรุณากรอกห้องเรียนเป็นตัวเลข 3 หลัก (เช่น 931) และเลขที่เป็นตัวเลข';
+  if (!(room >= 931 && room <= 947) && (noRaw >= 1 && noRaw <=41)) {
+    msg.textContent = 'กรุณากรอกห้องเรียนให้ถูกต้อง';
     msg.hidden = false;
+    show('');
+    return;
+  }
+  if ((room >= 931 && room <= 947) && !(noRaw >= 1 && noRaw <=41)) {
+    msg.textContent = 'กรุณากรอกเลขที่ให้ถูกต้อง';
+    msg.hidden = false;
+    show('');
+    return;
+  }
+  if (!(room >= 931 && room <= 947) && !(noRaw >= 1 && noRaw <=41)) {
+    msg.textContent = 'กรุณากรอกห้องเรียนและเลขที่ให้ถูกต้อง';
+    msg.hidden = false;
+    show('');
     return;
   }
   if (!API_URL.startsWith('https://script.google.com/')) {
@@ -51,6 +65,7 @@ $('v-form').addEventListener('submit', async ev => {
   }
   msg.hidden = true;
   const no = String(parseInt(noRaw, 10));
+  btn.disabled = true;
   show('loading');
   startDots();
   try {
@@ -67,5 +82,6 @@ $('v-form').addEventListener('submit', async ev => {
     show('none');
   } finally {
     clearInterval(dotTimer);
+    btn.disabled = false;
   }
 });
