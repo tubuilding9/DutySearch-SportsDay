@@ -40,7 +40,7 @@ $('v-form').addEventListener('submit', async ev => {
   const noRaw = $('no').value.trim();
   const msg = $('v-msg');
   if (!/^\d{3}$/.test(room) || !/^\d{1,3}$/.test(noRaw)) {
-    msg.textContent = 'กรุณากรอกห้องเรียน 3 หลัก (เช่น 931) และเลขที่เป็นตัวเลข';
+    msg.textContent = 'กรุณากรอกห้องเรียนเป็นตัวเลข 3 หลัก (เช่น 931) และเลขที่เป็นตัวเลข';
     msg.hidden = false;
     return;
   }
