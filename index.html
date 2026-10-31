@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'">
+<title>ระบบตรวจสอบหน้าที่งานกีฬาสี คณะสีบานเย็น</title>
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=sarabun:wght@400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <img class="logo" src="Logo.png" alt="โลโก้ตึก 9">
+  <h1>ระบบตรวจสอบหน้าที่งานกีฬาสีประจำคณะสีบานเย็น ปีการศึกษา 2569</h1>
+</header>
+
+<main class="card">
+  <h2>ค้นหาหน้าที่งานกีฬาสี</h2>
+
+  <form id="v-form" novalidate>
+    <input id="room" placeholder="กรอกห้องเรียน" aria-label="กรอกห้องเรียน" inputmode="numeric" pattern="\d{3}" maxlength="3" required autocomplete="off">
+    <input id="no" placeholder="กรอกเลขที่" aria-label="กรอกเลขที่" inputmode="numeric" pattern="\d{1,3}" maxlength="3" required autocomplete="off">
+    <button type="submit">ค้นหา</button>
+  </form>
+  <p id="v-msg" class="err center" role="alert" hidden></p>
+
+  <p id="v-loading" class="center" hidden>กำลังค้นหาข้อมูล<span id="dots"></span></p>
+
+  <div id="v-found" hidden>
+    <p id="r-name"></p>
+    <p id="r-room"></p>
+    <p>หน้าที่ของคุณคือ <b id="r-duty"></b></p>
+  </div>
+
+  <div id="v-none" class="err" hidden>
+    <p>ไม่พบข้อมูล</p>
+    <p>โปรดติดต่อคณะกรรมการตึก และรีเฟรชหน้าเว็บไซต์เพื่อลองใหม่อีกครั้ง</p>
+  </div>
+</main>
+
+<footer class="contact">
+  <p>ช่องทางการติดต่อ (Contacts)</p>
+  <p>
+    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".3" stop-color="#fa7e1e"/><stop offset=".55" stop-color="#d62976"/><stop offset=".8" stop-color="#962fbf"/><stop offset="1" stop-color="#4f5bd5"/></linearGradient></defs><rect width="24" height="24" rx="6" fill="url(#ig)"/><rect x="5" y="5" width="14" height="14" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.4" cy="7.6" r="1" fill="#fff"/></svg>
+    </a> : building9.tu
+  </p>
+  <p>
+    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Line">
+      <svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#06C755"/><ellipse cx="12" cy="10.8" rx="7.4" ry="5.6" fill="#fff"/><path d="M9 15l-.9 3.2 4.2-2.6z" fill="#fff"/><text x="12" y="12.2" font-size="4.3" font-weight="700" fill="#06C755" text-anchor="middle" font-family="Arial,sans-serif">LINE</text></svg>
+    </a> : Openchat ตึก 9
+  </p>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>
