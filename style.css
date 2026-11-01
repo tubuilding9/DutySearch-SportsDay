@@ -29,6 +29,8 @@
   --banner-pos: center 15%;
   --banner-size: contain;
   --banner-height: clamp(200px, 22vw, 340px);
+  --content-width: 2400px;
+  --title-fit: 36;
 
 }
  
@@ -94,4 +96,14 @@ input:focus-visible, button:focus-visible { outline: 3px solid var(--title); out
 
 @media (min-height: 900px) {
   .card { margin-bottom: calc(var(--banner-height) + 20px); }
+}
+
+.banner, header { width: min(100%, var(--content-width)); margin-inline: auto; }
+
+@media (min-width: 900px) {
+  h1 {
+    white-space: nowrap;
+    font-size: min(calc(var(--logo) * var(--title-ratio)),
+                   calc((min(100vw, var(--content-width)) - var(--logo) - var(--shift-right) - 100px) / var(--title-fit)));
+  }
 }
