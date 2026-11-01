@@ -20,7 +20,7 @@
   --fs-contact: clamp(.8rem, 2.2vw, .95rem);
   --icon-size: 1.3em;
   --radius: 20px;
-  --shift-right: clamp(8px, 8vw, 120px);
+  --shift-right: 0px;
 
   --pad: clamp(12px, 3vw, 32px);
   --footer-bg: var(--title);
@@ -46,7 +46,7 @@ body {
 }
  
 header {
-  display: flex; align-items: center; gap: clamp(12px, 3vw, 32px);
+  display: flex; align-items: center; justify-content: center; gap: clamp(12px, 3vw, 32px);
   padding-left: var(--shift-right);
 }
 .logo { flex: none; width: var(--logo); height: var(--logo); border-radius: 50%; object-fit: cover; border: 2px solid var(--title); }
@@ -107,3 +107,6 @@ input:focus-visible, button:focus-visible { outline: 3px solid var(--title); out
                    calc((min(100vw, var(--content-width)) - var(--logo) - var(--shift-right) - 100px) / var(--title-fit)));
   }
 }
+
+header { margin-bottom: -12px; }
+.banner { margin-bottom: -12px; }
