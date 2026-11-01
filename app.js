@@ -4,8 +4,6 @@ const API_URL = 'https://script.google.com/macros/s/AKfycbztsD6qumI0hYof9mOQw-oy
 
 const TIMEOUT_MS = 15000;
 const RETRIES = 2;
-const NO_DUTY = 'ไม่มี';
-const NO_DUTY_NOTE = '(หากมีหน้าที่แล้ว โปรดติดต่อคณะกรรมการตึก)';
 
 const $ = id => document.getElementById(id);
 const views = { loading: $('v-loading'), found: $('v-found'), none: $('v-none') };
@@ -75,7 +73,7 @@ $('v-form').addEventListener('submit', async ev => {
     if (d && d.status === 'ok') {
       $('r-name').textContent = d.name;
       $('r-room').textContent = 'ห้อง ' + room + ' เลขที่ ' + no;
-      $('r-duty').textContent = d.duty === NO_DUTY ? d.duty + ' ' + NO_DUTY_NOTE : (d.duty || 'ยังไม่มีข้อมูลหน้าที่');
+      $('r-duty').textContent = d.duty || 'ยังไม่มีข้อมูลหน้าที่';
       show('found');
     } else {
       show('none');
