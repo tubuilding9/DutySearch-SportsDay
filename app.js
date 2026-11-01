@@ -40,19 +40,19 @@ $('v-form').addEventListener('submit', async ev => {
   const room = $('room').value.trim();
   const noRaw = $('no').value.trim();
   const msg = $('v-msg');
-  if (!(room >= 931 && room <= 947) && (noRaw >= 1 && noRaw <=41)) {
+  if (!((room >= 931 && room <= 937) || (room >= 941 && room <= 943) || (room >= 945 && room <= 947)) && (noRaw >= 1 && noRaw <=41)) {
     msg.textContent = 'กรุณากรอกห้องเรียนให้ถูกต้อง';
     msg.hidden = false;
     show('');
     return;
   }
-  if ((room >= 931 && room <= 947) && !(noRaw >= 1 && noRaw <=41)) {
+  if (((room >= 931 && room <= 937) || (room >= 941 && room <= 943) || (room >= 945 && room <= 947)) && !(noRaw >= 1 && noRaw <=41)) {
     msg.textContent = 'กรุณากรอกเลขที่ให้ถูกต้อง';
     msg.hidden = false;
     show('');
     return;
   }
-  if (!(room >= 931 && room <= 947) && !(noRaw >= 1 && noRaw <=41)) {
+  if (!((room >= 931 && room <= 937) || (room >= 941 && room <= 943) || (room >= 945 && room <= 947)) && !(noRaw >= 1 && noRaw <=41)) {
     msg.textContent = 'กรุณากรอกห้องเรียนและเลขที่ให้ถูกต้อง';
     msg.hidden = false;
     show('');
